@@ -1,0 +1,473 @@
+@charset "UTF-8";
+
+/* 共通部分
+------------------------------- */
+html {
+    font-size: 100%;
+    /* 必須　文字の大きさはデフォ16だが「念のため指定100%指定」*/
+}
+body{
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", sans-serif;
+    line-height: 1.7;
+    color: #432;
+    /* googleフォント、行間、文字カラー */
+}
+a {
+    text-decoration: none;
+    /* aタグに効果かけない。今回はリンクの下線消し*/
+}
+img {
+    max-width: 100%;
+    /* 画像の最大ワイズ（横幅）を指定（元画像のサイズまでにしている） */
+}
+/* レイアウト */
+.wrapper {
+    max-width: 1120px;
+    /* 端にnewsとmenuとcontact寄せないための最大幅指定 */
+    margin: auto;
+    /* 中央配置（一応？） */
+    padding: 0 1.5rem;
+    /* 左右余白（ないと端にくっついてしまう） */
+}
+.align-center {
+    text-align: center;
+    /* 真ん中寄せ（h1で使用しているのでテキストタグ） */
+}
+/* 見出し */
+.font-english {
+    font-family: 'Philosopher', sans-serif;
+    font-weight: normal;
+    /* ↑ 英語用フォントの設定 ↑ */
+}
+/* タイトルページの設定 */
+.page-title,
+.heading-large,
+.heading-medium {
+/* 同じ内容適用するので,でまとめている */
+    font-size: 3rem;
+    text-align: center;
+}
+.page-title {
+/* 違う部分は分けている */
+    margin-top: 2rem;
+    line-height: 1.4;
+}
+.heading-large {
+/* 違う部分は分けている */
+    margin-bottom: 1rem;
+}
+
+/* ボタン */
+.btn {
+    display: inline-block;
+    /* インラインブロックないと可読域限界まで突き抜ける */
+    /* 明確にはインライン要素（今回はaタグ）をブロック要素に変えることでpaddingなどを適用している */
+    font-size: 1.5rem;
+    background-color: #0bd;
+    color: #fff;
+    border-radius: 8px;
+    /* 角まるくする */
+    padding: .75rem 1.5rem;
+    /* ボタン内側余白 */
+    transition: .5s; 
+    /* 0.5秒かけて切り替わる */
+}
+.btn:hover {
+    background-color: #0090aa;
+    /* マウスオンで色変更 */
+    translate : 10px
+    /* （0.5秒かけて）右に10px移動。マウスオン動作色々設定できるのある。 */
+    }
+
+/* iframe */
+iframe {
+    width: 100%;
+}    
+
+/* ヘッダー
+------------------------------- */
+.page-header {
+    padding-top: .5rem;
+    /* タイトルロゴの上方向余白（16/2で8px) */
+}
+.logo {
+    width: 210px;
+    /* 画像の横幅210px指定 */
+}
+.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    font-size: 1.5rem;
+    list-style: none;
+    /* 上２行で真ん中寄せ配列、gapで余白、文字サイズ、リストの「・」消す用none */
+}
+.main-nav a {
+    color: #432;
+    /* main-naviのaタグ文字カラー指定 */
+}
+.main-nav a:hover {
+    color: #0bd;
+    /* main-naviのaタグにマウスオンした時カラー */
+}
+
+/* ヘッダーカバー画像
+------------------------------- */
+.cover {
+    background-size: cover;
+    /* 画面中央配置 */
+    background-position: center bottom;
+    /* 写真は中央下配置（下の方が消えないように） */
+    height: 800px;
+}
+
+.sub-cover {
+    background-size: cover;
+    /* 画面中央配置 */
+    background-position: center bottom;
+    /* 写真は中央下配置（下の方が消えないように） */
+    height: 528px;
+    /* homeと同じ800pxだと下過ぎるので変更 */
+    margin-bottom: 4rem;
+    /* 「information」が近くなりすぎないよう下64px空け */
+}
+
+/* HOME
+------------------------------- */
+.cover-home {
+    background-image: url(../images/cover-home-s.webp);
+    /* url指定の「../」は1階層上のフォルダへ移動 */
+}
+.about {
+    max-width: 736px;
+    /* 横に文字広がりすぎて見辛いのでmaxを制限している */
+    padding: 0 1.5rem;
+    /* 上下0左右24px（文字の左右にスペースが出来るように） */
+    margin: 3rem auto 0;
+    /* 中央寄せのマージンゼロオート */
+}
+.about p {
+    margin-bottom: 3rem;
+    /* 画面下に余白が出来るようにしている（48px） */
+}
+
+/* NEWS
+------------------------------- */
+.cover-news {
+    background-image: url(../images/cover-news-s.webp);
+}
+.post {
+    margin-bottom: 3rem;
+}
+.post-title {
+    font-weight: normal;
+    margin-bottom: 1.25rem;
+}
+.post-info {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.post-cat {
+    display: flex;
+    /* フレックスで横並び（値はデフォ） */
+    gap: .5rem;
+    list-style: none;
+}
+.post-cat a {
+    color: #432;
+    background-color: #faf7f0;
+    border-radius: 8px;
+    font-size: .875rem;
+    padding: .5rem .75rem;
+}
+.post-cat a:hover {
+    background-color: #c9c2bc;
+}
+.post-date {
+    font-size: .875rem;
+    /* 14px */
+}
+.post-thumbnail {
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+}
+.post p {
+    margin-bottom: 1.5rem;
+    line-height: 2;
+}
+.ad {
+    display: none;
+}
+.ad_s{
+    display: block;
+}
+
+/* サイドバー */
+.side-menu {
+    list-style: none;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+.side-menu li {
+    border-bottom: 1px solid #c9c2bc;
+}
+.side-menu a {
+    color: #432;
+    display: block;
+    padding: 1rem;
+}
+.side-menu a:hover {
+    color: #0bd;
+}
+/* MENU
+------------------------------- */
+.cover-menu {
+    background-image: url(../images/cover-menu-s.webp);
+}
+.grid {
+    display: grid;
+    gap: 2rem 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+}
+.item img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 16px;
+}
+.item p {
+    font-size: .875rem;
+}
+
+/* CONTACT
+------------------------------- */
+.cover-contact {
+    background-image: url(../images/cover-contact-s.webp);
+}
+
+/* 店舗情報 */
+.location {
+    margin-bottom: 3.5rem;
+}
+.location-info {
+    margin-bottom: 2rem;
+}
+.location-info .info {
+    padding: 0;
+}
+
+/* お問い合わせ */
+.email {
+    max-width: 916px;
+    background-color: #faf7f0;
+    border-radius: 48px;
+    padding: 1.5rem 2.5rem 2.5rem;
+    margin: 0 auto 2rem;
+}
+.email p {
+    margin: 1rem 0 2rem;
+}
+
+/* SNS */
+.sns-item {
+    margin-bottom: 2rem;
+}
+.sns-item .heading-medium {
+    margin-bottom: .5rem;
+}
+.sns-youtube {
+    aspect-ratio: 16/9;
+}
+.sns-youtube iframe {
+    height: 100%;
+}
+
+/* フッター
+------------------------------- */
+.page-footer {
+    background-image: url(../images/footer-s.webp);
+    background-size: cover;
+    /* 縦横比維持したままマックスまで広がる、ので縦横どっちかは画像消えるかも（containは縦横どっちかマックスになったら終わり＝背景色みえちゃうかも） */
+    background-position: center;
+    /* 画像中央寄せなので必須 */
+    padding-top: 12rem;
+    /* 上方との間隔空けるため192px指定（これないと「メニューを見る」が迫ってる） */
+}
+.info {
+    width: 100%;
+    /* このワイズは、↓の最大サイズ指定とセット（widthしないと大きくならないので） */
+    max-width: 544px;
+    /* 見せたい大きさを指定している（ないと画面大きい時に小さかったりなので）。また、これがないとwidth100%が画面端まで行くので注意*/
+    margin: auto;
+    /* 中央寄せる用 */
+    padding: 0 1.5rem;
+    /* 縦は0、横を1.5rem狭める（見た目良くする） */
+    border-spacing: 0;
+    /* th側とtd側の線間を0にしてくっつけてる（デフォ値は2） */
+}
+.info th,
+.info td {
+    border-bottom: 1px solid #c9c2bc;
+    /* 下線の太さ、酒類（solid=1本線指定）、色 */
+}
+.info th {
+    text-align: left;
+    /* デフォ値がcenterなのでleft指定 */
+    font-weight: normal;   
+    /* th（テーブルヘッダー）はデフォ値が太字なのでthに合わせている */
+    padding: 1rem;
+    /* tdの文字回り16px空け */
+}
+.info td {
+    padding: 1rem 0;
+}
+.copyright {
+    background-color: #432;
+    text-align: center;
+    /* 指定しないと左寄せ */
+    padding: 2rem 0;
+    /* この0は縦2remのために記述（2remだけだと上下左右2remになっちゃうので） */
+    margin-top: 6rem;
+    /* フッターとの間隔を6rem空けたいので */
+    color: #fff;
+}
+
+/*  デスクトップ版
+    レスポンシブ用 
+------------------------------- */
+@media (min-width: 800px) {
+/* 画面の横幅800px超えてたら以下を適応 */
+    
+    /* 見出し */
+    .page-title {
+        font-size: 5rem;
+    }
+    .heading-large {
+        font-size: 4rem;
+    }
+    .post-title {
+        font-size: 2rem;
+    }
+    /* ヘッダー */
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        /* 両端配置 */
+        padding-top: 1.5rem;
+        /* 24px上空け（スマホ版は8pxなのでそれより大きく設定） */
+    }
+    .main-nav {
+        font-size: 2rem;
+    }
+    /* 画面大きいと文字見にくいんでPC画面なら文字サイズ大きくするよといった記述 */
+    /* ヘッダーカバー画像 */
+    .sub-cover {
+        height: 400px;
+        margin-bottom: 6rem;
+    }
+
+    /* HOME */
+    .cover-home {
+        background-image: url(../images/cover-home-l.webp);
+        /* PC用画像に変えている */
+    }
+    .about {
+        margin: 4rem auto 0;
+    }
+    /* NEWS */
+    .cover-news {
+        background-image: url(../images/cover-news-l.webp);
+    }
+    .news-contents {
+        display: flex;
+        justify-content: space-between;
+    }
+    .post {
+    /* width: 70%; */
+        width: 60%; /* ← 60%に変更 ------------------------------- */
+        order: 2;
+    }
+    .sidebar {
+        width: 22%;
+        order: 3; 
+    }
+    .ad {
+        order: 1;
+        display: block;
+    }
+    .ad_s{
+        display: none;
+    }
+    
+    
+    .sidebar .heading-medium {
+        line-height: 1;
+        margin-bottom: 1rem;
+    }
+
+    /* MENU */
+    .cover-menu {
+        background-image: url(../images/cover-menu-l.webp);
+    }
+    .grid {
+    gap: 3rem 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    }
+    .item img {
+        margin-bottom: .5rem;
+    }
+    .item p {
+        font-size: 1rem;
+    }
+    .item-big {
+    grid-column: 1/3;
+    grid-row: 1/3;
+    }
+
+    .item-big img{
+        height:94.5%;
+        width: 100%;
+    }
+        /* CONTACT */
+    .cover-contact {
+        background-image: url(../images/cover-contact-l.webp);
+    }
+    .location {
+        display: flex;
+        gap: 2rem;
+    }
+    .location-info {
+        width: 32%;
+    }
+    .location-info .info th {
+        padding-left: 2rem;
+    }
+    .location-map {
+        width: 64%;
+    }
+        .email {
+        margin-bottom: 4rem;
+    }
+    .sns {
+        display: flex;
+        align-items: flex-start;
+        gap: 2rem;
+        margin-bottom: 0;
+    }
+    .sns-item {
+        flex: 1;
+    }
+
+    /* フッター */
+    .page-footer {
+        background-image: url(../images/footer-l.webp);
+        /* PC用画像に変えている */
+        padding-top: 12rem;
+
+    }
+    .info th {
+        padding-left: 2.5rem;
+        /* 少し中心に寄せている */
+    }
+}
